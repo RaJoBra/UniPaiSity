@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:uniparcity/PlanningItemModel.dart';
+import 'package:uniparcity/dataHandler.dart';
 import 'package:uniparcity/profil.dart';
 
 import 'CustomBottomNavBar.dart';
 
-class PlanningList extends StatelessWidget {
-  const PlanningList({Key? key}) : super(key: key);
+class PlanningList extends StatefulWidget {
+  @override
+  PlanningListState createState() => new PlanningListState();
+}
+
+class PlanningListState extends State<PlanningList> {
+  List<PlanningItem> planningItems = [PlanningItem(
+  id: 1,
+  studentId: 1,
+  description: 'Koffer packen',
+  dueDate: DateTime.now(),
+  open: true)];
+
+  void checkboxChanged(bool value, int id) {
+    planningItems[id].open = !value;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,76 +36,27 @@ class PlanningList extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const Profil()),
                   );
                 },
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
               )
             ]),
-        body: const Center(
-          child: MyStatefulWidget(),
-        ),
+      body: ListView.builder(
+        itemCount: planningItems.length,
+        itemBuilder: (context, index) {
+          return CheckboxListTile(
+            title: Text(planningItems[index].description.toString()),
+            value: !planningItems[index].open,
+            onChanged: (bool? value) {
+              setState(() {
+                planningItems[index].open = !value!;
+                checkboxChanged(planningItems[index].open, planningItems[index].id);
+              });
+            }
+          );
+        },
+      ),
       bottomNavigationBar: CustomBottomNavBar()
     );
   }
 }
 
-class LabeledCheckbox extends StatelessWidget {
-  const LabeledCheckbox({
-    Key? key,
-    required this.label,
-    required this.padding,
-    required this.value,
-    required this.onChanged,
-  }) : super(key: key);
 
-  final String label;
-  final EdgeInsets padding;
-  final bool value;
-  final ValueChanged<bool> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onChanged(!value);
-      },
-      child: Padding(
-        padding: padding,
-        child: Row(
-          children: <Widget>[
-            Expanded(child: Text(label)),
-            Checkbox(
-              value: value,
-              onChanged: (bool? newValue) {
-                onChanged(newValue!);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  bool _isSelected = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return LabeledCheckbox(
-      label: 'This is the label text',
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      value: _isSelected,
-      onChanged: (bool newValue) {
-        setState(() {
-          _isSelected = newValue;
-        });
-      },
-    );
-  }
-}

@@ -28,7 +28,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       if(_selectedIndex == 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const PlanningList()),
+          MaterialPageRoute(builder: (context) => PlanningList()),
         );
       }
       if(_selectedIndex == 2) {
