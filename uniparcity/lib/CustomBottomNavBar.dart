@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:uniparcity/planninglist.dart';
+import 'package:uniparcity/universities.dart';
+
+import 'feed.dart';
+import 'home.dart';
+import 'onboarding.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({Key? key}) : super(key: key);
@@ -8,11 +14,41 @@ class CustomBottomNavBar extends StatefulWidget {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if(_selectedIndex == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Universities()),
+        );
+      }
+      if(_selectedIndex == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PlanningList()),
+        );
+      }
+      if(_selectedIndex == 2) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Home()),
+        );
+      }
+      if(_selectedIndex == 3) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Onboarding()),
+        );
+      }
+      if(_selectedIndex == 4) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Feed()),
+        );
+      }
     });
   }
 

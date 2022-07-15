@@ -10,7 +10,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: const Text('Willkommen bei UniPairCity'),
+            automaticallyImplyLeading: false,
+            title: const Text('UniParCity'),
             actions: <Widget>[
               IconButton(
                 onPressed: () {
