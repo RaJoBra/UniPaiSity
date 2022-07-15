@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uniparcity/dataHandler.dart';
 
 import 'profil.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';

@@ -29,10 +29,6 @@ class _UniversitiesState extends State<Universities> {
 
     final String content = await response.transform(utf8.decoder).join();
     final List universities = json.decode(content);
-
-    setState(() {
-      _universities = universities;
-    });
   }
 
   @override
@@ -50,39 +46,46 @@ class _UniversitiesState extends State<Universities> {
               );
             },
             icon: Icon(Icons.person),
-          )
-        ]),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          TextButton(
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.red)
-                )
-              )
-            ),
-            onPressed: () { },
-            child: Text('Like'),
           ),
-          TextButton(
-            style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.red)
-                    )
-                )
-            ),
-            onPressed: () { },
-            child: Text('Dislike'),
-          )]
+        ],
       ),
-        ]),
+      body: Column(
+
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.green)),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text('Like'),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text('Dislike'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
       bottomNavigationBar: CustomBottomNavBar(),
     );
   }
