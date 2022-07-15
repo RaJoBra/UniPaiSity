@@ -10,9 +10,9 @@ class UniversityPage extends StatefulWidget {
 
 class _UniversityPageState extends State<UniversityPage> {
 
-  var data = new dataHandler();
+  var data = new DataHandler();
 
-  var university =  dataHandler._fetchData();
+  // var university =  DataHandler.fetchData();
   @override
   Widget build(BuildContext context) {
     return Container();
