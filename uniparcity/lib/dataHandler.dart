@@ -13,11 +13,18 @@ class DataHandler {
     final response = await http.get(Uri.parse(apiUrl+endpoint));
 
     if(response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      print(jsonResponse);
-      print( "Das ist aus unbekannten Gründen: " );
-      print(jsonResponse.map((data) => new PlanningItem.fromJson(data)).toList().toString());
-      return jsonResponse.map((data) => new PlanningItem.fromJson(data)).toList();
+      List jsonResponse = await json.decode(response.body);
+      List<PlanningItem> planning = [];
+
+
+      for (var u in jsonResponse) {
+        print("hallo");
+        // PlanningItem item = PlanningItem(id: u["id"], studentId: u["studentId"], description: u["description"], dueDate: u["dueDate"], open: u["open"]);
+        var item = PlanningItem.fromJson(u);
+        planning.add(item);
+      }
+
+      return planning;
     } else {
       throw Exception('Failed to load ');
     }

@@ -11,20 +11,9 @@ class PlanningList extends StatefulWidget {
 }
 
 class PlanningListState extends State<PlanningList> {
-  List<PlanningItem> planningItems = [
-    PlanningItem(
-        id: 1,
-        studentId: 1,
-        description: 'Koffer packen',
-        dueDate: DateTime.now(),
-        open: true)
-  ];
+
 
   DataHandler handler = new DataHandler();
-
-  void checkboxChanged(bool value, int id) {
-    planningItems[id].open = !value;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +38,6 @@ class PlanningListState extends State<PlanningList> {
               future: handler.fetchPlaningItems(),
               builder: (context, snapshot) {
                 if (snapshot.data == null) {
-                  print(snapshot.data);
                   return Container(
                     child: const Center(
                       child: Text('Loading...'),
@@ -67,8 +55,6 @@ class PlanningListState extends State<PlanningList> {
                           setState(
                             () {
                               snapshot.data![index].open = !value!;
-                              checkboxChanged(snapshot.data![index].open,
-                                  snapshot.data![index].id);
                             },
                           );
                         },

@@ -1,8 +1,8 @@
 class PlanningItem {
-  final int id;
+  final String id;
   final int studentId;
   final String description;
-  final DateTime dueDate;
+  final int dueDate;
   bool open = false;
 
   PlanningItem({
@@ -21,5 +21,10 @@ class PlanningItem {
       dueDate: json['dueDate'],
       open: json['open'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'PlanningItem{id: $id, studentId: $studentId, description: $description, dueDate: $dueDate, open: $open';
   }
 }
