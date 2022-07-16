@@ -11,15 +11,78 @@ class PlanningList extends StatefulWidget {
 }
 
 class PlanningListState extends State<PlanningList> {
+  final TextEditingController _textFieldController = TextEditingController();
+
+  String codeDialog = '';
+  String valueText = '';
+
+  DataHandler handler = DataHandler();
 
   void checkboxChanged(PlanningItem item) {
     //!item.open;
     handler.updatePlanningItem(item);
   }
 
-  List<bool> state = [];
+  void addPlanningItem(String description) {
+    final itemOne = PlanningItem(
+        id: 1.toString(),
+        studentId: 1,
+        description: 'Handy laden',
+        dueDate: 1,
+        open: true);
+    final newItem = PlanningItem(
+        id: 80.toString(),
+        studentId: 1,
+        description: description,
+        dueDate: 1,
+        open: false);
+    handler.createPlanningItem(newItem);
+    handler.updatePlanningItem(itemOne);
+  }
 
-  DataHandler handler = new DataHandler();
+  Future<void> _displayTextInputDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Liste erweitern'),
+            content: TextField(
+              onChanged: (value) {
+                setState(() {
+                  valueText = value;
+                });
+              },
+              controller: _textFieldController,
+              decoration:
+                  const InputDecoration(hintText: "Füge ein ToDo hinzu"),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                child: const Text('CANCEL'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              FlatButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                child: const Text('OK'),
+                onPressed: () {
+                  setState(() {
+                    codeDialog = valueText;
+                    addPlanningItem(codeDialog);
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +101,8 @@ class PlanningListState extends State<PlanningList> {
                 icon: const Icon(Icons.person),
               )
             ]),
-        body: Container(
-          child: Card(
+        body: Stack(children: <Widget>[
+          Card(
             child: FutureBuilder<List<PlanningItem>>(
               future: handler.fetchPlaningItems(),
               builder: (context, snapshot) {
@@ -50,8 +113,9 @@ class PlanningListState extends State<PlanningList> {
                     ),
                   );
                 } else {
+
                   return ListView.builder(
-                    itemCount: snapshot.data!.length ,
+                    itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return CheckboxListTile(
                         title:
@@ -60,7 +124,7 @@ class PlanningListState extends State<PlanningList> {
                         onChanged: (bool? value) {
                           setState(
                             () {
-                              snapshot.data![index].open = !value!;
+                              snapshot.data![index].open = value!;
                               checkboxChanged(snapshot.data![index]);
                             },
                           );
@@ -72,7 +136,30 @@ class PlanningListState extends State<PlanningList> {
               },
             ),
           ),
-        ),
-        bottomNavigationBar: CustomBottomNavBar());
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          _displayTextInputDialog(context);
+                        },
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),))),
+                        child: const Icon(Icons.add)),
+                  )
+                ],
+              )
+            ],
+          )
+        ]),
+        bottomNavigationBar: const CustomBottomNavBar());
   }
 }

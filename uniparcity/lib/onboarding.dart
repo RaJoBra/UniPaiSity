@@ -20,7 +20,7 @@ class Onboarding extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Profil()),
               );
             },
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
           )
         ]),
       body: Center(

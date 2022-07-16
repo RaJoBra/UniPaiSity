@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:uniparcity/PlanningItemModel.dart';
 import 'UniversitatsModel.dart';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 
 
 class DataHandler {
@@ -52,11 +53,25 @@ class DataHandler {
 
   void updatePlanningItem(PlanningItem item) async {
     const endpoint = 'PlanningListItem';
+    final id = item.id;
 
-    final response = await http.put(Uri.parse('$baseUrl$endpoint/$item.id'),
+    await http.put(Uri.parse('$baseUrl$endpoint/$id'),
     headers: <String, String> {
       'Content-Type': 'application/json; charset=UTF-8',
     },
+
     body: jsonEncode(item.toJson()));
   }
+
+  void createPlanningItem(PlanningItem item) async {
+    const endpoint = 'PlanningListItem';
+    final response = await http.post(
+      Uri.parse('$baseUrl$endpoint'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(item),
+    );
+  }
 }
+
