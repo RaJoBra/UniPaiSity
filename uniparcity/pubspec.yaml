@@ -28,6 +28,16 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   http: 0.13.4
+  webfeed: ^0.7.0
+  url_launcher: ^6.0.18
+  intl: ^0.17.0
+  animations: ^2.0.2
+  xml: ^5.3.1
+  xml2json: ^5.3.2
+  cached_network_image: ^3.2.0
+  ionicons: ^0.1.2
+  flutter_html: ^2.2.1
+  flutter_launcher_icons: ^0.9.2
   flutter:
     sdk: flutter
 
