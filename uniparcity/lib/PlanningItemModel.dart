@@ -3,7 +3,7 @@ class PlanningItem {
   final int studentId;
   final String description;
   final int dueDate;
-  bool open = false;
+  bool open;
 
   PlanningItem({
     required this.id,
@@ -22,6 +22,14 @@ class PlanningItem {
       open: json['open'],
     );
   }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'studentId': studentId,
+    'description': description,
+    'dueDate': dueDate,
+    'open': open
+  };
 
   @override
   String toString() {

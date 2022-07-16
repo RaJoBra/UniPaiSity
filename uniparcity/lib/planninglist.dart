@@ -12,6 +12,12 @@ class PlanningList extends StatefulWidget {
 
 class PlanningListState extends State<PlanningList> {
 
+  void checkboxChanged(PlanningItem item) {
+    //!item.open;
+    handler.updatePlanningItem(item);
+  }
+
+  List<bool> state = [];
 
   DataHandler handler = new DataHandler();
 
@@ -50,11 +56,12 @@ class PlanningListState extends State<PlanningList> {
                       return CheckboxListTile(
                         title:
                             Text(snapshot.data![index].description.toString()),
-                        value: !snapshot.data![index].open,
+                        value: snapshot.data![index].open,
                         onChanged: (bool? value) {
                           setState(
                             () {
                               snapshot.data![index].open = !value!;
+                              checkboxChanged(snapshot.data![index]);
                             },
                           );
                         },

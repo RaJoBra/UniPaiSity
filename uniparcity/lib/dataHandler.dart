@@ -5,12 +5,12 @@ import 'dart:convert';
 
 
 class DataHandler {
-  static const apiUrl = 'https://62cebc7b826a88972d01f8d7.mockapi.io/';
+  static const baseUrl = 'https://62cebc7b826a88972d01f8d7.mockapi.io/';
 
   Future<List<PlanningItem>> fetchPlaningItems() async {
     const endpoint = 'PlanningListItem';
 
-    final response = await http.get(Uri.parse(apiUrl+endpoint));
+    final response = await http.get(Uri.parse(baseUrl+endpoint));
 
     if(response.statusCode == 200) {
       List jsonResponse = await json.decode(response.body);
@@ -23,10 +23,19 @@ class DataHandler {
         var item = PlanningItem.fromJson(u);
         planning.add(item);
       }
-
       return planning;
     } else {
       throw Exception('Failed to load ');
     }
+  }
+
+  void updatePlanningItem(PlanningItem item) async {
+    const endpoint = 'PlanningListItem';
+
+    final response = await http.put(Uri.parse('$baseUrl$endpoint/$item.id'),
+    headers: <String, String> {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(item.toJson()));
   }
 }
