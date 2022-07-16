@@ -43,16 +43,6 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
           Container(
               child: ListView(
                 children: [
-                  Container(
-                    height: 300,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(RssFeed['image']),
-                          fit: BoxFit.cover,
-                        ),
-                        color: Colors.black12
-                    ),
-                  ),
                   SizedBox(height: 10,),
                   Text(RssFeed['title'],
                     style: TextStyle(
@@ -68,15 +58,12 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
                           DateTime.parse(
                               RssFeed['pubDate'].toString()))),
                       Spacer(),
-                      Icon(Ionicons.person_outline),
-                      Text(RssFeed['author'])
                     ],
                   ),
                   SizedBox(height: 10,),
-                  ElevatedButton.icon(onPressed:() => launch(RssFeed['link']), icon: Icon(Ionicons.link), label: Text('Visit link')),
                   SizedBox(height: 15,),
                   Html(
-                    data: RssFeed['content'],
+                    data: RssFeed['description'],
                   )
                 ],
               )

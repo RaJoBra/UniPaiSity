@@ -39,7 +39,7 @@ class _FeedState extends State<Feed> {
       });
 
       // This is an open REST API endpoint for testing purposes
-      const API = 'https://adeptosdebancada.com/rssfeed?content=articles';
+      const API = 'https://www.iwi.hs-karlsruhe.de/intranet/feed/rss/news.xml';
       final  response = await get(Uri.parse(API));
       var channel = RssFeed.parse(response.body);
       setState(() {
@@ -61,7 +61,7 @@ class _FeedState extends State<Feed> {
         title: const Text("Feed"),
         actions:<Widget>[
           IconButton(onPressed: () => loadData(),
-              icon: const Icon(Icons.rss_feed),
+              icon: const Icon(Icons.refresh),
               ),
           IconButton(
             onPressed: () {
@@ -84,12 +84,8 @@ class _FeedState extends State<Feed> {
                 final item = rss.items![index];
                 final feedItems={
                   'title':item.title,
-                  'content':item.content!.value,
-                  'creator':item.dc!.creator,
-                  'image':item.media!.contents![0].url,
-                  'link':item.link,
+                  'description':item.description,
                   'pubDate':item.pubDate,
-                  'author':item.dc!.creator
                 };
                 print(feedItems);
                 return InkWell(
@@ -99,8 +95,6 @@ class _FeedState extends State<Feed> {
                         )
                     ),
                     child: ListTile(
-                      leading:  Image(image: CachedNetworkImageProvider(
-                          item.media!.contents![0].url.toString())),
                       title: Text(item.title.toString()),
                       subtitle:Row(
                         children: [
@@ -109,8 +103,6 @@ class _FeedState extends State<Feed> {
                               DateTime.parse(
                                   item.pubDate.toString()))),
                           Spacer(),
-                          Icon(Ionicons.person_outline),
-                          Text(item.dc!.creator.toString())
                         ],
                       ) ,
                     )
