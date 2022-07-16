@@ -46,7 +46,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       if(_selectedIndex == 4) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const Feed()),
+          MaterialPageRoute(builder: (context) => const Feed(title: 'Feed',)),
         );
       }
     });
