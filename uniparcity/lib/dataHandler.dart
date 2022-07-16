@@ -29,6 +29,27 @@ class DataHandler {
     }
   }
 
+  Future<List<UniversitatsModel>> fetchUniversitys() async {
+    const endpoint = 'PlanningListItem';
+
+    final response = await http.get(Uri.parse(baseUrl+endpoint));
+
+    if(response.statusCode == 200) {
+      List jsonResponse = await json.decode(response.body);
+      List<UniversitatsModel> uniList = [];
+
+
+      for (var u in jsonResponse) {
+        // PlanningItem item = PlanningItem(id: u["id"], studentId: u["studentId"], description: u["description"], dueDate: u["dueDate"], open: u["open"]);
+        var item = UniversitatsModel.fromJson(u);
+        uniList.add(item);
+      }
+      return uniList;
+    } else {
+      throw Exception('Failed to load ');
+    }
+  }
+
   void updatePlanningItem(PlanningItem item) async {
     const endpoint = 'PlanningListItem';
 

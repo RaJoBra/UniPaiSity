@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uniparcity/UniversityCard.dart';
 import 'package:uniparcity/dataHandler.dart';
 
 import 'profil.dart';
@@ -24,8 +25,7 @@ class Home extends StatelessWidget {
                 icon: Icon(Icons.person),
               )
             ]),
-        body: const Center(
-        ),
+        // body:  UniversityCard(),
         bottomNavigationBar: CustomBottomNavBar());
   }
 }

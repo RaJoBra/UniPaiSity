@@ -1,6 +1,6 @@
 class UniversitatsModel {
   final String id;
-  final DateTime createdAt;
+  final int createdAt;
   final String Name;
   final String Information;
   final num TuitionFee;
