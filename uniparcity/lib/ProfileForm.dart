@@ -113,6 +113,8 @@ class Profilform extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     PROFILEEXISTS = true;
+                    
+
                   }, // In der Funktion noch validieren wenn du willst und dann halt abschicken.
                   child: const Text(
                     'Profil anlegen',
