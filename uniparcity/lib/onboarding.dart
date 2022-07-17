@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
 import 'package:uniparcity/profil.dart';
+import 'package:ionicons/ionicons.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -22,6 +23,18 @@ class Onboarding extends StatelessWidget {
             icon: Icon(Icons.person),
           )
         ]),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text('Das Onboarding Modul wird in einer späteren Version hinzugefügt und ist nicht Teil dieses MVP',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Icon(Ionicons.construct_outline),
+          ],
+        )
+      ),
       bottomNavigationBar: CustomBottomNavBar(),
     );
   }
