@@ -3,6 +3,7 @@ import 'package:uniparcity/CustomBottomNavBar.dart';
 import 'ProfileForm.dart';
 
 class Profil extends StatefulWidget {
+
   const Profil({Key? key}) : super(key: key);
 
   @override
