@@ -4,6 +4,8 @@ import 'package:uniparcity/Profil/profil.dart';
 import 'dart:io';
 import 'dart:convert';
 
+import 'package:uniparcity/University/field_report.dart';
+
 class Universities extends StatefulWidget {
   const Universities({Key? key}) : super(key: key);
 
@@ -147,7 +149,12 @@ class _UniversitiesState extends State<Universities> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FieldReport()),
+                      );
+                    },
                     child: Ink(
                       decoration: BoxDecoration(
                         border:
