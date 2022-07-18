@@ -61,6 +61,9 @@ class _FeedState extends State<Feed> {
         automaticallyImplyLeading: false,
         title: const Text("Feed"),
         actions:<Widget>[
+          IconButton(onPressed: () => {},
+            icon: const Icon(Icons.add),
+          ),
           IconButton(onPressed: () => loadData(),
               icon: const Icon(Icons.refresh),
               ),
