@@ -14,9 +14,45 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
+  final TextEditingController _textFieldController = TextEditingController();
   bool profileData;
 
   DataHandler handler = DataHandler();
+
+  Future<void> _displayTextInputDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Warnhinweis'),
+            content: const Text('Sollen alle ihre Daten unwiderruflich gelöscht werden'),
+            actions: <Widget>[
+              FlatButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                child: const Text('CANCEL'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              FlatButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                child: const Text('OK'),
+                onPressed: () {
+                  handler.DeleteAccount();
+                  setState(() {
+                    Navigator.pop(context);
+                    PROFILEEXISTS = false;
+                  });
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   _ProfilState({this.profileData = false});
 
@@ -63,9 +99,6 @@ class _ProfilState extends State<Profil> {
             )),
         body: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(10),
-            ),
             Container(
               alignment: Alignment.topCenter,
               child: const Icon(
@@ -75,10 +108,10 @@ class _ProfilState extends State<Profil> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(5),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FutureBuilder<Student>(
                   future: handler.getStudentWithId(),
@@ -104,6 +137,9 @@ class _ProfilState extends State<Profil> {
                                   fontSize: 30,
                                 ),
                               ),
+                              const Padding(
+                                padding: EdgeInsets.all(20),
+                              ),
                               Text(
                                 snapshot.data!.Name.toString(),
                                 style: const TextStyle(
@@ -114,18 +150,22 @@ class _ProfilState extends State<Profil> {
                               ),
                             ],
                           ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: ElevatedButton(
+                          const Padding(
+                            padding: EdgeInsets.all(40),
+                          ),
+
+                            ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.redAccent,
                               ),
-                              onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyData())),
+                              onPressed: () {
+                                print('Something');
+                                var filePath = handler.downloadFile();
+                                print('$filePath');
+
+                              },
                               child: const Text(
-                                'Persönliche Daten anzeigen ',
+                                'Persönliche Daten importieren ',
                                 textAlign: TextAlign.center,
                                 softWrap: true,
                                 style: TextStyle(
@@ -133,6 +173,24 @@ class _ProfilState extends State<Profil> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
+                              ),
+                            ),
+                          const Padding(
+                            padding: EdgeInsets.all(10),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.red,
+                            ),
+                            onPressed: () => _displayTextInputDialog(context),
+                            child: const Text(
+                              'Persönliche Daten Löschen ',
+                              textAlign: TextAlign.center,
+                              softWrap: true,
+                              style: TextStyle(
+                                fontFamily: 'Arial',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
                               ),
                             ),
                           )

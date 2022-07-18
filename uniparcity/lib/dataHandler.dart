@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import 'package:uniparcity/Model/PlanningItemModel.dart';
 import 'Model/UniversitatsModel.dart';
 import 'dart:convert';
@@ -76,6 +77,61 @@ class DataHandler {
     );
   }
 
+  void DeleteAccount() async {
+    const endpoint = 'Student';
+    final response = await http.delete(
+      Uri.parse('$baseUrl$endpoint/$STUDENTID'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+  }
+
+  Future<String?> getDownloadPath() async {
+    Directory? directory;
+    try {
+      if (Platform.isIOS) {
+        directory = await getApplicationDocumentsDirectory();
+      } else {
+        directory = Directory('/storage/emulated/0/Download');
+        // Put file in global download folder, if for an unknown reason it didn't exist, we fallback
+        // ignore: avoid_slow_async_io
+        if (!await directory.exists()) directory = await getExternalStorageDirectory();
+      }
+    } catch (err, stack) {
+      print("Cannot get download folder path");
+    }
+    return directory?.path;
+  }
+
+  Future<String> downloadFile( ) async {
+    HttpClient httpClient = HttpClient();
+    File file;
+    var dir = await getDownloadPath();
+    String fileName = 'UniPairCityData';
+    String endpoint = 'Student';
+    String filePath = '';
+    String myUrl = '$baseUrl$endpoint/$STUDENTID';
+
+    try {
+      var request = await httpClient.getUrl(Uri.parse(myUrl));
+      var response = await request.close();
+      if(response.statusCode == 200) {
+        var bytes = await consolidateHttpClientResponseBytes(response);
+        filePath = '$dir/$fileName';
+        file = File(filePath);
+        await file.writeAsBytes(bytes);
+      }
+      else
+        filePath = 'Error code: '+response.statusCode.toString();
+    }
+    catch(ex){
+      filePath = 'Can not fetch url';
+    }
+
+    return filePath;
+  }
+
     Future<String> createStudent(Student student) async {
       const endpoint = 'Student';
 
@@ -85,9 +141,11 @@ class DataHandler {
           },
           body: jsonEncode(student.toJson()));
 
-      if(response.statusCode == 200) {
+      print(response.statusCode);
+      if(response.statusCode == 201) {
         var responseBody = await jsonDecode(response.body);
         Student responseStudent = Student.fromJson(responseBody);
+        await Future.delayed(Duration(seconds: 2));
         STUDENTID = await responseBody['id'];
 
         return await responseBody['id'].toString();

@@ -1,2 +1,3 @@
-bool PROFILEEXISTS = true;
-String? STUDENTID = "72";
+bool PROFILEEXISTS = false;
+String? STUDENTID;
+bool PROFILDATA = false;

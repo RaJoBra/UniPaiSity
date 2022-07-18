@@ -134,11 +134,9 @@ class Profilform extends StatelessWidget {
 
                     String id = await handler.createStudent(CreateStudent);
 
-                    sleep(const Duration(seconds:2));
-
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Profil()),
+                      MaterialPageRoute(builder: (context) => Profil()),
                     );
                   }, // In der Funktion noch validieren wenn du willst und dann halt abschicken.
                   child: const Text(
