@@ -64,7 +64,7 @@ class _ProfilState extends State<Profil> {
         body: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(10),
             ),
             Container(
               alignment: Alignment.topCenter,
@@ -81,7 +81,7 @@ class _ProfilState extends State<Profil> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 FutureBuilder<Student>(
-                  // future: handler.getStudentWithId(),
+                  future: handler.getStudentWithId(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container(
@@ -90,49 +90,59 @@ class _ProfilState extends State<Profil> {
                         ),
                       );
                     } else {
-                      return Row(children: [
-                        Text(
-                          snapshot.data!.Firstname.toString(),
-                          textAlign: TextAlign.center,
-                          softWrap: true,
-                          style: const TextStyle(
-                            fontFamily: 'Arial',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
+                      return Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                snapshot.data!.Firstname.toString(),
+                                textAlign: TextAlign.center,
+                                softWrap: true,
+                                style: const TextStyle(
+                                  fontFamily: 'Arial',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                ),
+                              ),
+                              Text(
+                                snapshot.data!.Name.toString(),
+                                style: const TextStyle(
+                                  fontFamily: 'Arial',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Text(
-                          snapshot.data!.Name.toString(),
-                          style: const TextStyle(
-                            fontFamily: 'Arial',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                          ),
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.redAccent,
-                          ),
-                          onPressed: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => MyData())),
-                          child: const Text(
-                            'Persönliche Daten anzeigen ',
-                            textAlign: TextAlign.center,
-                            softWrap: true,
-                            style: TextStyle(
-                              fontFamily: 'Arial',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.redAccent,
+                              ),
+                              onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyData())),
+                              child: const Text(
+                                'Persönliche Daten anzeigen ',
+                                textAlign: TextAlign.center,
+                                softWrap: true,
+                                style: TextStyle(
+                                  fontFamily: 'Arial',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ]);
+                          )
+                        ],
+                      );
                     }
                   },
                 ),
               ],
             ),
-
           ],
         ),
         bottomNavigationBar: CustomBottomNavBar(),
