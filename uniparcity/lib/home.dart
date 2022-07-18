@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
         appBar: AppBar(
             automaticallyImplyLeading: false,
             title: const Text('UniParCity'),
+            backgroundColor: Colors.redAccent,
             actions: <Widget>[
               IconButton(
                 onPressed: () {

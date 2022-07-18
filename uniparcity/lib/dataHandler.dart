@@ -70,7 +70,7 @@ class DataHandler {
 
     var responseBody = await jsonDecode(response.body);
     Student responseStudent = Student.fromJson(responseBody);
-    STUDENTID = responseStudent.id;
+    STUDENTID = responseBody['id'];
 
     final String som = "somehitng";
   }

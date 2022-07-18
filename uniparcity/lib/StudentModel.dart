@@ -33,11 +33,11 @@ class Student {
   Map<String, dynamic> toJson() => {
         'Name': Name,
         'Firstname': Firstname,
-        'Study Specilization': StudySpecilization,
-        'Phone Number': PhoneNumber,
-        'E-Mail Adress': eMailAdress,
-        'Create At': CreatedAt,
-        'SelectedUnivistery': SelectedUniversityID,
+        'StudySpecialization': StudySpecilization,
+        'Telefonnummer': PhoneNumber,
+        'E-MailAdresse': eMailAdress,
+        'createdAt': CreatedAt,
+        'SelectedUniversityID': SelectedUniversityID,
         'id': id,
       };
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
 import 'ProfileForm.dart';
+import 'config.dart';
 
 class Profil extends StatefulWidget {
 
@@ -17,7 +18,7 @@ class _ProfilState extends State<Profil> {
 
   @override
   Widget build(BuildContext context) {
-    if (profileData == false) {
+    if (PROFILEEXISTS == true) {
       return Scaffold(
         appBar: AppBar(), //hier AppBar von euch einsetzen
         body: profileData

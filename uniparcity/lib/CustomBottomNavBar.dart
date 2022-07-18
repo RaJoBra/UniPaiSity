@@ -57,7 +57,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
-      selectedItemColor: Colors.blueAccent,
+      selectedItemColor: Colors.redAccent,
       unselectedItemColor: Colors.blueGrey,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
