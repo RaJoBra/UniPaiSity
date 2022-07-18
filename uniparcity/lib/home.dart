@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uniparcity/UniversityCard.dart';
+import 'package:uniparcity/University/UniversityCard.dart';
 import 'package:uniparcity/dataHandler.dart';
 
-import 'profil.dart';
+import 'Profil/profil.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
 
 class Home extends StatelessWidget {

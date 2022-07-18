@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
+import '../config.dart';
+import '../dataHandler.dart';
 import 'ProfileForm.dart';
-import 'config.dart';
-import 'dataHandler.dart';
 
 class Profil extends StatefulWidget {
   const Profil({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class _ProfilState extends State<Profil> {
               )),
           body: Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(20),
               ),
               Container(
@@ -72,7 +72,7 @@ class _ProfilState extends State<Profil> {
                   color: Colors.blue,
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(20),
               ),
               Row(
@@ -99,7 +99,8 @@ class _ProfilState extends State<Profil> {
                 ],
               ),
             ],
-          ));
+          ),
+      bottomNavigationBar: CustomBottomNavBar(),);
     }
   }
 }

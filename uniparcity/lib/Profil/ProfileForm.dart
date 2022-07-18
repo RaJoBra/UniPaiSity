@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:uniparcity/config.dart';
 import 'package:uniparcity/dataHandler.dart';
 import 'package:uniparcity/home.dart';
-import 'package:uniparcity/profil.dart';
-import 'StudentModel.dart';
+import 'package:uniparcity/Profil/profil.dart';
+import '../Model/StudentModel.dart';
 
 class Profilform extends StatelessWidget {
   final nameController = TextEditingController();
@@ -21,6 +21,7 @@ class Profilform extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
+        title: Text('Erstellen sie ein Profil'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {

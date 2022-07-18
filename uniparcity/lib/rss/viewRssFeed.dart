@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:uniparcity/feed.dart';
+import 'package:uniparcity/rss/feed.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';

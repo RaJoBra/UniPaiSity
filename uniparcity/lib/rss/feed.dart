@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
-import 'package:uniparcity/profil.dart';
+import 'package:uniparcity/Profil/profil.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:animations/animations.dart';
@@ -9,7 +9,7 @@ import 'package:webfeed/webfeed.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:uniparcity/viewRssFeed.dart';
+import 'package:uniparcity/rss/viewRssFeed.dart';
 
 class Feed extends StatefulWidget {
   const Feed({Key? key, required this.title}) : super(key: key);

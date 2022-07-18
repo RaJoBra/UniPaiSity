@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:uniparcity/planninglist.dart';
-import 'package:uniparcity/universities.dart';
+import 'package:uniparcity/Planning/planninglist.dart';
+import 'package:uniparcity/University/universities.dart';
 
-import 'feed.dart';
+import 'rss/feed.dart';
 import 'home.dart';
-import 'onboarding.dart';
+import 'onBoarding/onboarding.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({Key? key}) : super(key: key);

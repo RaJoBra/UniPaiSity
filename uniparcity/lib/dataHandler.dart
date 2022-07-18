@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
-import 'package:uniparcity/PlanningItemModel.dart';
-import 'UniversitatsModel.dart';
+import 'package:uniparcity/Model/PlanningItemModel.dart';
+import 'Model/UniversitatsModel.dart';
 import 'dart:convert';
-import 'StudentModel.dart';
+import 'Model/StudentModel.dart';
 import 'config.dart';
 
 class DataHandler {
