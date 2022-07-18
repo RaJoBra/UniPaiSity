@@ -64,8 +64,7 @@ class _UniversitiesState extends State<Universities> {
                     onPressed: () {},
                     child: Ink(
                       decoration: BoxDecoration(
-                        border:
-                        Border.all(color: Colors.black, width: 1.0),
+                        border: Border.all(color: Colors.black, width: 1.0),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(Icons.arrow_upward),
@@ -73,9 +72,7 @@ class _UniversitiesState extends State<Universities> {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text('Mehr Informationen')
-                    ],
+                    children: const [Text('Mehr Informationen')],
                   )
                 ],
               ),
@@ -89,24 +86,53 @@ class _UniversitiesState extends State<Universities> {
                       children: [
                         Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Image.asset('assets/HKA_Logo_Gesamt-v_RGB.png',
+                            child: Image.asset(
+                                'assets/HKA_Logo_Gesamt-v_RGB.png',
                                 height: 80)),
                         Column(
                           children: [
-                            Padding(padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              children: [
-                                const Text('Kosten: '),
-                                Row(
-                                  children: const [
-                                    Icon(Icons.monetization_on, size: 20),
-                                    Icon(Icons.monetization_on, size: 20),
-                                    Icon(Icons.monetization_on_outlined, size: 20),
-                                  ],
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    'Kosten: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  Row(
+                                    children: const [
+                                      Icon(Icons.monetization_on, size: 20),
+                                      Icon(Icons.monetization_on, size: 20),
+                                      Icon(Icons.monetization_on_outlined,
+                                          size: 20),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              children: const [
+                                Text(
+                                  'Sprachen: ',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
+                                Text('Deutsch'),
                               ],
                             ),
-                            )
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                children: const [
+                                  Text(
+                                    'Parteruni: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  Text('Nein'),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -174,13 +200,13 @@ class _UniversitiesState extends State<Universities> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FieldReport()),
+                        MaterialPageRoute(
+                            builder: (context) => const FieldReport()),
                       );
                     },
                     child: Ink(
                       decoration: BoxDecoration(
-                        border:
-                        Border.all(color: Colors.black, width: 1.0),
+                        border: Border.all(color: Colors.black, width: 1.0),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(Icons.arrow_downward),
@@ -188,9 +214,7 @@ class _UniversitiesState extends State<Universities> {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text('Erfahrungen anderer Studenten')
-                    ],
+                    children: const [Text('Erfahrungen anderer Studenten')],
                   )
                 ],
               ),
