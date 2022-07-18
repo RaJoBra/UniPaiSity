@@ -6,7 +6,7 @@ import 'Model/UniversitatsModel.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
-import 'StudentModel.dart';
+import 'Model/StudentModel.dart';
 import 'Model/StudentModel.dart';
 import 'config.dart';
 
@@ -21,7 +21,6 @@ class DataHandler {
     if (response.statusCode == 200) {
       List jsonResponse = await json.decode(response.body);
       List<PlanningItem> planning = [];
-
 
       for (var u in jsonResponse) {
         print("hallo");
@@ -43,7 +42,6 @@ class DataHandler {
     if (response.statusCode == 200) {
       List jsonResponse = await json.decode(response.body);
       List<UniversitatsModel> uniList = [];
-
 
       for (var u in jsonResponse) {
         // PlanningItem item = PlanningItem(id: u["id"], studentId: u["studentId"], description: u["description"], dueDate: u["dueDate"], open: u["open"]);
@@ -79,38 +77,40 @@ class DataHandler {
   }
 
   void createStudent(Student student) async {
-  Future<String> createStudent(Student student) async {
-    const endpoint = 'Student';
+    Future<String> createStudent(Student student) async {
+      const endpoint = 'Student';
 
-    final response = await http.post(Uri.parse('$baseUrl$endpoint'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(student.toJson()));
+      final response = await http.post(Uri.parse('$baseUrl$endpoint'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(student.toJson()));
 
-    var responseBody = await jsonDecode(response.body);
-    Student responseStudent = Student.fromJson(responseBody);
-    STUDENTID = await responseBody['id'];
+      var responseBody = await jsonDecode(response.body);
+      Student responseStudent = Student.fromJson(responseBody);
+      STUDENTID = await responseBody['id'];
 
-    return await responseBody['id'];
-  }
+      return await responseBody['id'];
+    }
 
-  Future<Student> getStudentWithId () async {
-    const endpoint = 'Student';
-    sleep(const Duration(seconds:2));
+    Future<Student> getStudentWithId() async {
+      const endpoint = 'Student';
+      sleep(const Duration(seconds: 2));
 
-    print(STUDENTID);
+      print(STUDENTID);
 
-    final response = await http.get(Uri.parse('$baseUrl$endpoint/$STUDENTID'));
+      final response =
+          await http.get(Uri.parse('$baseUrl$endpoint/$STUDENTID'));
 
-    if (response.statusCode == 200) {
-      var jsonResponse = await json.decode(response.body);
+      if (response.statusCode == 200) {
+        var jsonResponse = await json.decode(response.body);
 
-      Student student = Student.fromJson(jsonResponse);
+        Student student = Student.fromJson(jsonResponse);
 
-      return student;
-    } else {
-      throw Exception('Failed to load ');
+        return student;
+      } else {
+        throw Exception('Failed to load ');
+      }
     }
   }
 }
