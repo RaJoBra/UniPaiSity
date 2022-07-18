@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'package:uniparcity/Model/PlanningItemModel.dart';
 import 'Model/UniversitatsModel.dart';
@@ -59,7 +61,7 @@ class DataHandler {
         body: jsonEncode(item.toJson()));
   }
 
-  void createStudent(Student student) async {
+  Future<String> createStudent(Student student) async {
     const endpoint = 'Student';
 
     final response = await http.post(Uri.parse('$baseUrl$endpoint'),
@@ -70,8 +72,27 @@ class DataHandler {
 
     var responseBody = await jsonDecode(response.body);
     Student responseStudent = Student.fromJson(responseBody);
-    STUDENTID = responseBody['id'];
+    STUDENTID = await responseBody['id'];
 
-    final String som = "somehitng";
+    return await responseBody['id'];
+  }
+
+  Future<Student> getStudentWithId () async {
+    const endpoint = 'Student';
+    sleep(const Duration(seconds:2));
+
+    print(STUDENTID);
+
+    final response = await http.get(Uri.parse('$baseUrl$endpoint/$STUDENTID'));
+
+    if (response.statusCode == 200) {
+      var jsonResponse = await json.decode(response.body);
+
+      Student student = Student.fromJson(jsonResponse);
+
+      return student;
+    } else {
+      throw Exception('Failed to load ');
+    }
   }
 }

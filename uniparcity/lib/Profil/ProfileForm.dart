@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:uniparcity/config.dart';
 import 'package:uniparcity/dataHandler.dart';
@@ -120,7 +122,7 @@ class Profilform extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: Colors.redAccent,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     PROFILEEXISTS = true;
                     var CreateStudent = Student(
                       Name: nameController.text,
@@ -130,7 +132,9 @@ class Profilform extends StatelessWidget {
                       eMailAdress: mailController.text,
                     );
 
-                    handler.createStudent(CreateStudent);
+                    String id = await handler.createStudent(CreateStudent);
+
+                    sleep(const Duration(seconds:2));
 
                     Navigator.push(
                       context,
