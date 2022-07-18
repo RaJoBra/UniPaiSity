@@ -46,48 +46,130 @@ class _UniversitiesState extends State<Universities> {
                 MaterialPageRoute(builder: (context) => const Profil()),
               );
             },
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
           ),
         ],
       ),
-      body: Column(
-
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+          child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MaterialButton(
+                    onPressed: () {},
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        border:
+                        Border.all(color: Colors.black, width: 1.0),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.arrow_upward),
+                    ),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text('Mehr Informationen')
+                    ],
+                  )
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Image.asset('assets/HKA_Logo_Gesamt-v_RGB.png',
+                            height: 80)),
+                    const Flexible(
+                      child: Text('Die Hochschule Karlsruhe (Die HKA) ist eine '
+                          'der größten Hochschulen für angewandte Wissenschaften '
+                          '(Fachhochschule) in Baden-Württemberg. '
+                          'Die Studiengänge umfassen technisch-ingenieurwissenschaftliche, '
+                          'Informatik- und Wirtschafts- und bauspezifische Disziplinen '
+                          'und führen zu den Abschlüssen Bachelor und Master. '
+                          'Als erster berufsqualifizierender Abschluss lässt sich '
+                          'der Bachelor-Abschluss nach sieben Semestern '
+                          'Regelstudienzeit erwerben, der Master-Abschluss nach '
+                          'weiteren drei Semestern. Diese Abschlüsse wurden an der '
+                          'Hochschule Karlsruhe im Rahmen der Bologna-Reform '
+                          'seit 1999 eingeführt.'),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                        'assets/hochschule-karlsruhe-technik-wirtschaft.jpg',
+                        height: 250),
+                  ],
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TextButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.green)),
+                            borderRadius: BorderRadius.circular(30.0),
+                            side: const BorderSide(color: Colors.green)),
                       ),
                     ),
                     onPressed: () {},
-                    child: Text('Like'),
+                    child: const Text('Like'),
                   ),
                   TextButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
+                            borderRadius: BorderRadius.circular(30.0),
+                            side: const BorderSide(color: Colors.red)),
                       ),
                     ),
                     onPressed: () {},
-                    child: Text('Dislike'),
+                    child: const Text('Dislike'),
                   ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MaterialButton(
+                    onPressed: () {},
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        border:
+                        Border.all(color: Colors.black, width: 1.0),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.arrow_downward),
+                    ),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text('Erfahrungen anderer Studenten')
+                    ],
+                  )
                 ],
               ),
             ],
           ),
-        ],
+        ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      bottomNavigationBar: const CustomBottomNavBar(),
     );
   }
 }

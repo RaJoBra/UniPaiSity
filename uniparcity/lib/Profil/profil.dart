@@ -81,7 +81,7 @@ class _ProfilState extends State<Profil> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 FutureBuilder<Student>(
-                  future: handler.getStudentWithId(),
+                  // future: handler.getStudentWithId(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container(

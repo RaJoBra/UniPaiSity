@@ -75,6 +75,8 @@ flutter:
     - assets/universitaet_darmstadt.jpg
     - assets/Koffer-packen.jpg
     - assets/Zeitung.jpg
+    - assets/hochschule-karlsruhe-technik-wirtschaft.jpg
+    - assets/HKA_Logo_Gesamt-v_RGB.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
