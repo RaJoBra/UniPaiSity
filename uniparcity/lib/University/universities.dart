@@ -85,10 +85,32 @@ class _UniversitiesState extends State<Universities> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Image.asset('assets/HKA_Logo_Gesamt-v_RGB.png',
-                            height: 80)),
+                    Column(
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Image.asset('assets/HKA_Logo_Gesamt-v_RGB.png',
+                                height: 80)),
+                        Column(
+                          children: [
+                            Padding(padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Column(
+                              children: [
+                                const Text('Kosten: '),
+                                Row(
+                                  children: const [
+                                    Icon(Icons.monetization_on, size: 20),
+                                    Icon(Icons.monetization_on, size: 20),
+                                    Icon(Icons.monetization_on_outlined, size: 20),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                     const Flexible(
                       child: Text('Die Hochschule Karlsruhe (Die HKA) ist eine '
                           'der größten Hochschulen für angewandte Wissenschaften '

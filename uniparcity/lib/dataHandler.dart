@@ -58,7 +58,7 @@ class DataHandler {
     const endpoint = 'PlanningListItem';
     final id = item.id;
 
-    final response = await http.put(Uri.parse('$baseUrl$endpoint/$item.id'),
+    final response = await http.put(Uri.parse('$baseUrl$endpoint/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
