@@ -12,6 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool profileExist = false;
     return Scaffold(
         appBar: AppBar(
             automaticallyImplyLeading: false,

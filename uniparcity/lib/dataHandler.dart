@@ -4,6 +4,8 @@ import 'UniversitatsModel.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
+import 'StudentModel.dart';
+import 'config.dart';
 
 class DataHandler {
   static const baseUrl = 'https://62cebc7b826a88972d01f8d7.mockapi.io/';
@@ -11,9 +13,9 @@ class DataHandler {
   Future<List<PlanningItem>> fetchPlaningItems() async {
     const endpoint = 'PlanningListItem';
 
-    final response = await http.get(Uri.parse(baseUrl+endpoint));
+    final response = await http.get(Uri.parse(baseUrl + endpoint));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       List jsonResponse = await json.decode(response.body);
       List<PlanningItem> planning = [];
 
@@ -33,9 +35,9 @@ class DataHandler {
   Future<List<UniversitatsModel>> fetchUniversitys() async {
     const endpoint = 'PlanningListItem';
 
-    final response = await http.get(Uri.parse(baseUrl+endpoint));
+    final response = await http.get(Uri.parse(baseUrl + endpoint));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       List jsonResponse = await json.decode(response.body);
       List<UniversitatsModel> uniList = [];
 
@@ -55,12 +57,11 @@ class DataHandler {
     const endpoint = 'PlanningListItem';
     final id = item.id;
 
-    await http.put(Uri.parse('$baseUrl$endpoint/$id'),
-    headers: <String, String> {
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-
-    body: jsonEncode(item.toJson()));
+    final response = await http.put(Uri.parse('$baseUrl$endpoint/$item.id'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(item.toJson()));
   }
 
   void createPlanningItem(PlanningItem item) async {
@@ -73,5 +74,20 @@ class DataHandler {
       body: jsonEncode(item),
     );
   }
-}
 
+  void createStudent(Student student) async {
+    const endpoint = 'Student';
+
+    final response = await http.post(Uri.parse('$baseUrl$endpoint'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(student.toJson()));
+
+    var responseBody = await jsonDecode(response.body);
+    Student responseStudent = Student.fromJson(responseBody);
+    STUDENTID = responseStudent.id;
+
+    final String som = "somehitng";
+  }
+}

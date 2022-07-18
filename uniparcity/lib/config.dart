@@ -1,1 +1,2 @@
-int UserID = 0;
+bool PROFILEEXISTS = false;
+String? STUDENTID;
