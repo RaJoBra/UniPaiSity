@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:uniparcity/config.dart';
 import 'package:uniparcity/dataHandler.dart';
 import 'package:uniparcity/home.dart';
-import 'package:uniparcity/profil.dart';
-import 'StudentModel.dart';
+import 'package:uniparcity/Profil/profil.dart';
+import '../Model/StudentModel.dart';
 
 class Profilform extends StatelessWidget {
   final nameController = TextEditingController();
@@ -20,6 +22,8 @@ class Profilform extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text('Erstellen sie ein Profil'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -115,7 +119,10 @@ class Profilform extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.redAccent,
+                  ),
+                  onPressed: () async {
                     PROFILEEXISTS = true;
                     var CreateStudent = Student(
                       Name: nameController.text,
@@ -125,7 +132,9 @@ class Profilform extends StatelessWidget {
                       eMailAdress: mailController.text,
                     );
 
-                    handler.createStudent(CreateStudent);
+                    String id = await handler.createStudent(CreateStudent);
+
+                    sleep(const Duration(seconds:2));
 
                     Navigator.push(
                       context,

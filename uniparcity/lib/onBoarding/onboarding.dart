@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
-import 'package:uniparcity/profil.dart';
+import 'package:uniparcity/Profil/profil.dart';
 import 'package:ionicons/ionicons.dart';
 
 class Onboarding extends StatelessWidget {
@@ -10,6 +10,7 @@ class Onboarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         title: const Text("Onboarding"),
         actions: <Widget>[

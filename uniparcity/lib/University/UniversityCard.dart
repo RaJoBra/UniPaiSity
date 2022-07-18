@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uniparcity/UniversitatsModel.dart';
+import 'package:uniparcity/Model/UniversitatsModel.dart';
 
 class UniversityCard extends StatelessWidget {
   final UniversitatsModel uni;

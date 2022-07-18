@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
-import 'package:uniparcity/profil.dart';
+import 'package:uniparcity/Profil/profil.dart';
 import 'dart:io';
 import 'dart:convert';
 
@@ -35,6 +35,7 @@ class _UniversitiesState extends State<Universities> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         title: const Text("Universitätsfinder"),
         actions: <Widget>[

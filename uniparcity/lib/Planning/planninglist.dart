@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:uniparcity/PlanningItemModel.dart';
+import 'package:uniparcity/Model/PlanningItemModel.dart';
 import 'package:uniparcity/dataHandler.dart';
-import 'package:uniparcity/profil.dart';
+import 'package:uniparcity/Profil/profil.dart';
 
-import 'CustomBottomNavBar.dart';
+import '../CustomBottomNavBar.dart';
 
 class PlanningList extends StatefulWidget {
   @override
@@ -88,6 +88,7 @@ class PlanningListState extends State<PlanningList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+            backgroundColor: Colors.redAccent,
             automaticallyImplyLeading: false,
             title: const Text('Packliste'),
             actions: <Widget>[

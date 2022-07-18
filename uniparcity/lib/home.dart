@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uniparcity/feed.dart';
 import 'package:uniparcity/planninglist.dart';
 import 'package:uniparcity/universities.dart';
+import 'package:uniparcity/University/UniversityCard.dart';
+import 'package:uniparcity/dataHandler.dart';
 
 import 'profil.dart';
 import 'package:uniparcity/CustomBottomNavBar.dart';
@@ -17,6 +18,7 @@ class Home extends StatelessWidget {
         appBar: AppBar(
             automaticallyImplyLeading: false,
             title: const Text('UniParCity'),
+            backgroundColor: Colors.redAccent,
             actions: <Widget>[
               IconButton(
                 onPressed: () {
