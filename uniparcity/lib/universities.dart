@@ -35,6 +35,7 @@ class _UniversitiesState extends State<Universities> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         title: const Text("Universitätsfinder"),
         actions: <Widget>[

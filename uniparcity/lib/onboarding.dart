@@ -10,6 +10,7 @@ class Onboarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         title: const Text("Onboarding"),
         actions: <Widget>[

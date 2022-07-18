@@ -25,6 +25,7 @@ class PlanningListState extends State<PlanningList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+            backgroundColor: Colors.redAccent,
             automaticallyImplyLeading: false,
             title: const Text('Packliste'),
             actions: <Widget>[

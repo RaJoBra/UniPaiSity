@@ -57,6 +57,7 @@ class _FeedState extends State<Feed> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         title: const Text("Feed"),
         actions:<Widget>[

@@ -20,6 +20,7 @@ class Profilform extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -115,6 +116,9 @@ class Profilform extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.redAccent,
+                  ),
                   onPressed: () {
                     PROFILEEXISTS = true;
                     var CreateStudent = Student(

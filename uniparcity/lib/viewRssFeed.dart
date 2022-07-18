@@ -27,6 +27,7 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.redAccent,
         leading: IconButton(
           icon:Icon(Ionicons.arrow_back),
           onPressed: ()=> Navigator.pushReplacement(context,
