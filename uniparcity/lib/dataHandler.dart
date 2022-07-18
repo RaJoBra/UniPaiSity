@@ -76,7 +76,6 @@ class DataHandler {
     );
   }
 
-  void createStudent(Student student) async {
     Future<String> createStudent(Student student) async {
       const endpoint = 'Student';
 
@@ -86,11 +85,15 @@ class DataHandler {
           },
           body: jsonEncode(student.toJson()));
 
-      var responseBody = await jsonDecode(response.body);
-      Student responseStudent = Student.fromJson(responseBody);
-      STUDENTID = await responseBody['id'];
+      if(response.statusCode == 200) {
+        var responseBody = await jsonDecode(response.body);
+        Student responseStudent = Student.fromJson(responseBody);
+        STUDENTID = await responseBody['id'];
 
-      return await responseBody['id'];
+        return await responseBody['id'].toString();
+      } else {
+        throw Exception('Could not get Student');
+      }
     }
 
     Future<Student> getStudentWithId() async {
@@ -113,4 +116,4 @@ class DataHandler {
       }
     }
   }
-}
+
